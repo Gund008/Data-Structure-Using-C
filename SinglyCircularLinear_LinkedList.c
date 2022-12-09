@@ -264,7 +264,7 @@ int main()
     iRet=Count(Head,Tail);   //call by Value
     printf("Total Count of Linked list is:%d\n",iRet);
 
-    DeleteAtPos(&Head,&Tail,105,5);
+    DeleteAtPos(&Head,&Tail,5);
     Display(Head,Tail);
     iRet=Count(Head,Tail);   //call by Value
     printf("Total Count of Linked list is:%d\n",iRet);
