@@ -72,20 +72,27 @@ Description:Used to Delete First Elements from  linked list
 Parameter:Address of First Pointer And Last Pointer of linked list
 Return Value:void
 */
-void DeleteFirst(PPNODE First,PPNODE Last)
-{
-   if((*First==NULL) && (*Last==NULL))
-   {
-       return;
-   }
-   else
-   {
-     PNODE temp=*First;    
-     (*First)=(*First)->next;  
-     free(temp);
-     (*Last)->next=*First;
-   }
 
+
+void deleteFirst(PPNODE First,PPNODE Last)
+{
+        PNODE temp=*First;
+       if((*First)&&(*Last)==NULL)
+       {
+         return;
+       }
+       else if(*First==*Last)
+       {
+           free(*First);
+           *First=NULL;
+           *Last=NULL;
+       }
+       else
+       {
+           (*First)=(*First)->next;
+           free(temp);
+           (*Last)->next=(*First);
+       }       
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,20 +102,31 @@ Description:Used to Delete First Elements And Delete last element of linked list
 Parameter:Address of First Pointer And Last Pointer of linked list
 Return Value:void
 */
-void DeleteLast(PPNODE First,PPNODE Last)
+
+void deleteLast(PPNODE First,PPNODE Last)
 {
     PNODE temp=*First;
-   if((*First==NULL) && (*Last==NULL))
-   {
-       return;
-   }
-   else
-   {
-     free(*Last);
-     (*Last)=(*First)->next->next->next->next;
-     (*Last)->next=*First;
-   }
-
+    if((*First)&&(*Last)==NULL)
+    {
+        return;
+    }
+    else if(*First==*Last)
+    {
+        free(*First);
+        *First=NULL;
+        *Last=NULL;
+    }
+    else
+    {
+        while(temp->next!=(*Last))
+        {
+            temp=temp->next;
+        }
+        free (temp->next);
+        (*Last)=temp;
+        (*Last)->next=*First;
+        
+    }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
