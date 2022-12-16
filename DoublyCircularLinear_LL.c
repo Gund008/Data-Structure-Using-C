@@ -78,7 +78,7 @@ int Count(PNODE First,PNODE Last)
     int iCnt=0;
     if((First==NULL)&&(Last==NULL))  //filter
     {
-        printf("Linked list is empty\n");
+       return iCnt;
     }
 
     do
